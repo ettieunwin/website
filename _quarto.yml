@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  title: "Mathematical Population Dynamics Group"
+  search: true
+  navbar:
+    pinned: true
+    background: white
+    left:
+      - href: research.qmd
+        text: Research
+      - href: people.qmd
+        text: People
+      - href: publications.qmd
+        text: Publications
+      - href: software.qmd
+        text: Software
+      - href: opportunities.qmd
+        text: Join Us
+      - href: contact.qmd
+        text: Contact
+  page-footer:
+    center: "© Mathematical Population Dynamics Group"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
