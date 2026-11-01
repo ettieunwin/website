@@ -2,14 +2,25 @@ name: Publish Quarto Site
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +30,9 @@ jobs:
       - run: quarto render
 
       - uses: actions/upload-pages-artifact@v3
-  	    with:
-    	    path: ./_site
+        with:
+          path: ./_site
 
-      - uses: actions/deploy-pages@v4	
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
