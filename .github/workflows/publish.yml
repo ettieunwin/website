@@ -19,7 +19,7 @@ jobs:
       - run: quarto render
 
       - uses: actions/upload-pages-artifact@v3
-  	with:
+  	  with:
     	path: ./_site
 
       - uses: actions/deploy-pages@v4	
